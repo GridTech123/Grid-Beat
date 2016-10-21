@@ -215,17 +215,6 @@ while True:
         pickle.dump(firstStart, pickle_out)
         pickle_out.close()
     if panelMode == 'myMusic':
-        if mx > sx - 80 and mx < sx - 10 and my > 10 and my < 80:
-            screen.blit(newSongHoverImg, (sx - 80, 10))
-            hovering.hover(screen, 'Add a new song      ', color1, color2, mx, my, menu_font, sx)
-            if event.type == MOUSEBUTTONDOWN and event.button == 1:
-                panelMode = 'newMusic'   
-                newPic = os.path.dirname(__file__) + '\images/noPic.png'
-                newSongName = ''
-                newSong = ''
-                backup = True
-        else:
-            screen.blit(newSongImg, (sx - 80, 10))
         #renderer
         render = True
         renderClock = 0
@@ -285,6 +274,18 @@ while True:
 
         pygame.draw.rect(screen, color2, [60, 0, sx, 100])
         screen.blit(big_font.render('My Music', True, color3), (65, 10))
+
+        if mx > sx - 80 and mx < sx - 10 and my > 10 and my < 80:
+            screen.blit(newSongHoverImg, (sx - 80, 10))
+            hovering.hover(screen, 'Add a new song      ', color1, color2, mx, my, menu_font, sx)
+            if event.type == MOUSEBUTTONDOWN and event.button == 1:
+                panelMode = 'newMusic'   
+                newPic = os.path.dirname(__file__) + '\images/noPic.png'
+                newSongName = ''
+                newSong = ''
+                backup = True
+        else:
+            screen.blit(newSongImg, (sx - 80, 10))
 
     if panelMode == 'newMusic':
         if backup == True:
